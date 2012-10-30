@@ -153,7 +153,7 @@ public class PrimGraph
 	}
 
 	/**
-	 * Check if there are any univisted Vertices left in the list.
+	 * Check if there are any unvisited Vertices left in the list.
 	 * 
 	 * @return
 	 */
