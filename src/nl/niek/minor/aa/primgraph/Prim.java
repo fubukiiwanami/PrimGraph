@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class that creates a minimum spanning tree from the given NodeMap.
+ * Class that creates a minimum spanning tree from the given (Prim) Graph.
  * 
  * @author Niek
  * 
  */
 public class Prim
 {
-	private NodeMap	nodeMap;
+	private PrimGraph	graph;
 
 	public Prim()
 	{
-		nodeMap = NodeMap.getDefaultNodeMap();
+		graph = PrimGraphFactory.getDefaultGraph();
 	}
 
-	public Prim(NodeMap nodeMap)
+	public Prim(PrimGraph graph)
 	{
-		this.nodeMap = nodeMap;
+		this.graph = graph;
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class Prim
 	public void go()
 	{
 		/* Pick a starting vertex. */
-		Vertex startVertex = nodeMap.getStart();
+		Vertex startVertex = graph.getStart();
 		startVertex.setVisited();
 		println("Starting at " + startVertex.getName() + ".");
 
@@ -38,9 +38,9 @@ public class Prim
 		List<Edge> tree = new ArrayList<Edge>();
 
 		println("Looping...");
-		while (nodeMap.hasUnvisitedVertices())
+		while (graph.hasUnvisitedVertices())
 		{
-			Edge smallestEdge = nodeMap.getSmallestEdgeFromVisitedVertices();
+			Edge smallestEdge = graph.getSmallestEdgeFromVisitedVertices();
 
 			smallestEdge.getOne().setVisited();
 			smallestEdge.getTwo().setVisited();

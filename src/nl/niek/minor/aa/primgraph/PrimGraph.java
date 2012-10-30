@@ -5,78 +5,24 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Wrapping class for the list of vertices and edges.
+ * Representation of a connected, weighted graph. Keeps a list of vertices and
+ * edges. Is responsible for modifying these and getting info from them.
  * 
  * @author Niek
  * 
  */
-public class NodeMap
+public class PrimGraph
 {
 	private List<Vertex>	vertices;
 	private List<Edge>		edges;
 
-	public NodeMap()
+	/**
+	 * Construct a new PrimGraph. Edges and Vertices need to be added manually.
+	 */
+	public PrimGraph()
 	{
 		vertices = new ArrayList<Vertex>();
 		edges = new ArrayList<Edge>();
-	}
-
-	/**
-	 * Default example set of Vertices and Edges as seen on <a
-	 * href="http://en.wikipedia.org/wiki/Prim's_algorithm#Example_run"
-	 * >Wikipedia<a>.
-	 * 
-	 * @return
-	 */
-	public static NodeMap getDefaultNodeMap()
-	{
-		NodeMap nodeMap = new NodeMap();
-
-		Vertex a = new Vertex("A");
-		Vertex b = new Vertex("B");
-		Vertex c = new Vertex("C");
-		Vertex d = new Vertex("D");
-		Vertex e = new Vertex("E");
-		Vertex f = new Vertex("F");
-		Vertex g = new Vertex("G");
-
-		nodeMap.addVertex(a);
-		nodeMap.addVertex(b);
-		nodeMap.addVertex(c);
-		nodeMap.addVertex(d);
-		nodeMap.addVertex(e);
-		nodeMap.addVertex(f);
-		nodeMap.addVertex(g);
-
-		Edge ab = new Edge(a, b, 7);
-		Edge ad = new Edge(a, d, 5);
-
-		Edge bc = new Edge(b, c, 8);
-		Edge be = new Edge(b, e, 7);
-		Edge bd = new Edge(b, d, 9);
-
-		Edge ce = new Edge(c, e, 5);
-		Edge eg = new Edge(e, g, 9);
-		Edge ef = new Edge(e, f, 8);
-
-		Edge df = new Edge(d, f, 6);
-		Edge de = new Edge(d, e, 15);
-
-		Edge fg = new Edge(f, g, 11);
-
-		nodeMap.addEdge(ab);
-		nodeMap.addEdge(ad);
-		nodeMap.addEdge(bc);
-		nodeMap.addEdge(be);
-		nodeMap.addEdge(bd);
-		nodeMap.addEdge(ce);
-		nodeMap.addEdge(eg);
-		nodeMap.addEdge(ef);
-		nodeMap.addEdge(df);
-		nodeMap.addEdge(de);
-		nodeMap.addEdge(fg);
-
-		return nodeMap;
 	}
 
 	/**
@@ -103,18 +49,30 @@ public class NodeMap
 		return edgeList;
 	}
 
+	/**
+	 * Add a vertex. Make sure it is added to an Edge which is also added to
+	 * this Graph.
+	 * 
+	 * @param newVertex
+	 */
 	public void addVertex(final Vertex newVertex)
 	{
 		vertices.add(newVertex);
 	}
 
+	/**
+	 * Add an Edge. Make sure the Edge has two Vertices which are also in this
+	 * Graph.
+	 * 
+	 * @param newEdge
+	 */
 	public void addEdge(final Edge newEdge)
 	{
 		edges.add(newEdge);
 	}
 
 	/**
-	 * Starting at D
+	 * Get a pseudo random starting Vertex.
 	 * 
 	 * @return
 	 */
@@ -194,6 +152,11 @@ public class NodeMap
 		return visitedVertices;
 	}
 
+	/**
+	 * Check if there are any univisted Vertices left in the list.
+	 * 
+	 * @return
+	 */
 	public boolean hasUnvisitedVertices()
 	{
 		for (Vertex v : vertices)
