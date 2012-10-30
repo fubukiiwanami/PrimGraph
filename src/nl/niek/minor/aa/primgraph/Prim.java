@@ -25,7 +25,6 @@ public class Prim
 
 	/**
 	 * Find the minimum spanning tree for the given connected weighted graph.
-	 * For now it always starts at the first Vertex of the list.
 	 */
 	public void makeMinimumSpanningTree()
 	{
@@ -37,11 +36,15 @@ public class Prim
 		/* List of edges representing the minimum spanning tree. */
 		List<Edge> tree = new ArrayList<Edge>();
 
-		println("Looping...");
+		/* While not all Vertices are visited */
 		while (graph.hasUnvisitedVertices())
 		{
 			Edge smallestEdge = graph.getSmallestEdgeFromVisitedVertices();
 
+			/*
+			 * This edge is now added, therefore both ends must be visited.
+			 * (Regardless of previous status)
+			 */
 			smallestEdge.getOne().setVisited();
 			smallestEdge.getTwo().setVisited();
 
