@@ -27,7 +27,7 @@ public class Prim
 	 * Find the minimum spanning tree for the given connected weighted graph.
 	 * For now it always starts at the first Vertex of the list.
 	 */
-	public void go()
+	public void makeMinimumSpanningTree()
 	{
 		/* Pick a starting vertex. */
 		Vertex startVertex = graph.getStart();

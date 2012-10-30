@@ -9,7 +9,7 @@ public class PrimMain
 	public static void main(String[] args)
 	{
 		Prim prim = new Prim();
-		prim.go();
+		prim.makeMinimumSpanningTree();
 	}
 
 }
