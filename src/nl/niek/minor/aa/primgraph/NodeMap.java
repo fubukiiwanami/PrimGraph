@@ -103,19 +103,6 @@ public class NodeMap
 		return edgeList;
 	}
 
-	public boolean areConnected(Vertex one, Vertex two)
-	{
-		for (Edge edge : edges)
-		{
-			if (edge.hasVertex(one) && edge.hasVertex(two))
-			{
-				return true;
-			}
-		}
-
-		return false;
-	}
-
 	public void addVertex(final Vertex newVertex)
 	{
 		vertices.add(newVertex);
