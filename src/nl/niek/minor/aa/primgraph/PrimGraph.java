@@ -113,7 +113,7 @@ public class PrimGraph
 		}
 
 		Edge smallestEdge = getSmallestEdge(edgeList);
-		smallestEdge.setInTree();
+
 		return smallestEdge;
 	}
 

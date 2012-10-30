@@ -25,16 +25,17 @@ public class Prim
 
 	/**
 	 * Find the minimum spanning tree for the given connected weighted graph.
+	 * @return 
 	 */
-	public void makeMinimumSpanningTree()
+	public List<Edge> makeMinimumSpanningTree()
 	{
+		/* List of edges representing the minimum spanning tree. */
+		List<Edge> tree = new ArrayList<Edge>();
+		
 		/* Pick a starting vertex. */
 		Vertex startVertex = graph.getStart();
 		startVertex.setVisited();
 		println("Starting at " + startVertex.getName() + ".");
-
-		/* List of edges representing the minimum spanning tree. */
-		List<Edge> tree = new ArrayList<Edge>();
 
 		/* While not all Vertices are visited */
 		while (graph.hasUnvisitedVertices())
@@ -47,6 +48,7 @@ public class Prim
 			 */
 			smallestEdge.getOne().setVisited();
 			smallestEdge.getTwo().setVisited();
+			smallestEdge.setInTree();
 
 			tree.add(smallestEdge);
 			println("Added: " + smallestEdge.toString());
@@ -54,6 +56,8 @@ public class Prim
 
 		println("\nDone. List of edges in the minimum spanning tree:");
 		printEdges(tree);
+		
+		return tree;
 	}
 
 	private void printEdges(List<Edge> edges)
