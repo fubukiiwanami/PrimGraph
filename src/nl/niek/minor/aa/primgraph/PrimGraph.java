@@ -96,7 +96,7 @@ public class PrimGraph
 	 * 
 	 * @return
 	 */
-	public final Edge getSmallestEdgeFromVisitedVertices()
+	public Edge getSmallestEdgeFromVisitedVertices()
 	{
 		List<Vertex> visitedVertices = getVisitedVertices();
 		List<Edge> edgeList = new ArrayList<Edge>();
@@ -173,5 +173,18 @@ public class PrimGraph
 	private void illegalArgument(String string)
 	{
 		throw new IllegalArgumentException(string);
+	}
+	
+	@Override
+	public String toString()
+	{
+		StringBuffer buffer = new StringBuffer("");
+		
+		for (Edge e : edges)
+		{
+			buffer.append(e.toString() + "\n");
+		}
+		
+		return buffer.toString();
 	}
 }

@@ -36,7 +36,7 @@ public class Edge
 
 	public final String toString()
 	{
-		return one.getName() + " <--> " + two.getName();
+		return one.getName() + " <-" + weight + "-> " + two.getName();
 	}
 
 	public void setInTree()

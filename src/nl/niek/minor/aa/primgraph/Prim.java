@@ -15,23 +15,27 @@ public class Prim
 
 	public Prim()
 	{
-		graph = PrimGraphFactory.getDefaultGraph();
+		this(PrimGraphFactory.getDefaultGraph());
 	}
 
 	public Prim(PrimGraph graph)
 	{
 		this.graph = graph;
+
+		println("New Prim problem with the following Graph:");
+		println(graph.toString());
 	}
 
 	/**
 	 * Find the minimum spanning tree for the given connected weighted graph.
-	 * @return 
+	 * 
+	 * @return
 	 */
 	public List<Edge> makeMinimumSpanningTree()
 	{
 		/* List of edges representing the minimum spanning tree. */
 		List<Edge> tree = new ArrayList<Edge>();
-		
+
 		/* Pick a starting vertex. */
 		Vertex startVertex = graph.getStart();
 		startVertex.setVisited();
@@ -56,7 +60,7 @@ public class Prim
 
 		println("\nDone. List of edges in the minimum spanning tree:");
 		printEdges(tree);
-		
+
 		return tree;
 	}
 
